@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#153c39" />
+  <meta name="description" content="2027 이집트 10박 11일 공동편집 여행계획서 — 일정, 예약, 예산, 체크리스트를 하나의 공간에서." />
+  <title>EGYPT 2027 | 함께 만드는 여행</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+  <link rel="stylesheet" href="./styles.css" />
+  <script src="./config.js"></script>
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar" aria-label="주 메뉴">
+      <div class="brand">
+        <span class="brand-mark">✧</span>
+        <div><strong>EGYPT<span>’27</span></strong><small>OUR TRAVEL JOURNAL</small></div>
+      </div>
+      <div class="side-label">YOUR JOURNEY</div>
+      <nav class="side-nav" id="desktopNav">
+        <button data-page="home" class="nav-link active"><span class="nav-ico">◈</span> 여행 대시보드</button>
+        <button data-page="days" class="nav-link"><span class="nav-ico">▤</span> 11일 여행 일정</button>
+        <button data-page="bookings" class="nav-link"><span class="nav-ico">◇</span> 예약 관리 <span id="navBookingCount" class="nav-count">10</span></button>
+        <button data-page="budget" class="nav-link"><span class="nav-ico">◉</span> 여행 경비</button>
+        <button data-page="todos" class="nav-link"><span class="nav-ico">✓</span> 준비 체크리스트</button>
+        <button data-page="guide" class="nav-link"><span class="nav-ico">☼</span> 여행 정보</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="mini-postcard"><div class="postcard-sun"></div><div class="postcard-pyr pyr-a"></div><div class="postcard-pyr pyr-b"></div><span>ADVENTURE<br/>IS CALLING.</span></div>
+        <div class="sync-pill"><i id="syncDot" class="sync-dot"></i><span id="syncText">연결 확인 중</span></div>
+        <button id="logoutButton" class="text-button hidden" data-action="logout">로그아웃</button>
+      </div>
+    </aside>
+    <div class="main-column">
+      <header class="topbar">
+        <div class="mobile-brand">✧ &nbsp; EGYPT <b>’27</b></div>
+        <div class="crumb"><span>THE EGYPT EXPEDITION</span><span class="crumb-divider">/</span><strong id="pageCrumb">여행 대시보드</strong></div>
+        <div class="top-actions">
+          <span id="identity" class="identity"></span>
+          <button class="button button-ghost button-sm" data-action="copy-link" title="여행계획서 주소 복사">↗ <span class="desktop-only">링크 공유</span></button>
+          <button class="button button-ghost button-sm" data-action="export" title="데이터 백업">↓ <span class="desktop-only">백업</span></button>
+        </div>
+      </header>
+      <main id="app" class="content" tabindex="-1"></main>
+      <footer class="footer">EGYPT ’27 &nbsp; · &nbsp; JAN 11 — JAN 21, 2027 &nbsp; · &nbsp; MADE FOR OUR JOURNEY</footer>
+    </div>
+  </div>
+  <nav id="mobileNav" class="mobile-nav" aria-label="모바일 메뉴">
+    <button class="mobile-nav-btn active" data-page="home"><span>◈</span><small>홈</small></button>
+    <button class="mobile-nav-btn" data-page="days"><span>▤</span><small>일정</small></button>
+    <button class="mobile-nav-btn" data-page="bookings"><span>◇</span><small>예약</small></button>
+    <button class="mobile-nav-btn" data-page="budget"><span>◉</span><small>경비</small></button>
+    <button class="mobile-nav-btn" data-page="todos"><span>✓</span><small>준비</small></button>
+    <button class="mobile-nav-btn" data-page="guide"><span>☼</span><small>정보</small></button>
+  </nav>
+  <div id="modalRoot"></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div id="authGate" class="auth-gate hidden">
+    <div class="auth-card">
+      <div class="auth-art"><span>𓂀</span></div>
+      <div class="auth-title">같이 만드는<br/><em>이집트 여행</em></div>
+      <p>공동 편집자로 등록된 이메일과 비밀번호로 로그인해 주세요. 두 사람의 수정 내역이 같은 여행계획서에 저장됩니다.</p>
+      <form id="loginForm" class="auth-form">
+        <label>이메일<input name="email" type="email" placeholder="your@email.com" autocomplete="email" required /></label>
+        <label>비밀번호<input name="password" type="password" placeholder="비밀번호" autocomplete="current-password" required /></label>
+        <button type="submit" class="button button-primary">여행계획서 열기 →</button>
+      </form>
+      <p id="loginError" class="login-error hidden"></p>
+      <small>계정은 사이트 관리자가 Supabase에서 생성합니다.</small>
+    </div>
+  </div>
+</body>
+</html>
